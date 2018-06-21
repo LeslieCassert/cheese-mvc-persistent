@@ -66,8 +66,10 @@ public class MenuController {
         Menu menu = menuDao.findOne(menuId);
         AddMenuItemForm form = new AddMenuItemForm(
                 cheeseDao.findAll(), menu);
-        model.addAttribute("title", " add item to menu: " + menu.getName());
+        model.addAttribute("title", "Add item to menu: " + menu.getName());
         model.addAttribute("form", form);
+
+
         return "menu/add-item";
     }
 
@@ -83,6 +85,6 @@ public class MenuController {
         theMenu.addItem(theCheese);
         menuDao.save(theMenu);
 
-        return"redirect:/menu/view" + theMenu.getId();
+        return "redirect:/menu/view/" + theMenu.getId();
     }
 }
